@@ -1,10 +1,14 @@
 const PRINTFUL_API = "https://api.printful.com";
 
 function authHeaders() {
-  return {
+  const headers = {
     Authorization: `Bearer ${process.env.PRINTFUL_API_KEY}`,
     "Content-Type": "application/json",
   };
+  if (process.env.PRINTFUL_STORE_ID) {
+    headers["X-PF-Store-Id"] = process.env.PRINTFUL_STORE_ID;
+  }
+  return headers;
 }
 
 export async function getStoreProducts() {
