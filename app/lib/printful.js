@@ -16,7 +16,10 @@ export async function getStoreProducts() {
     headers: authHeaders(),
     cache: "no-store",
   });
-  if (!res.ok) throw new Error(`Printful products fetch failed: ${res.status}`);
+  if (!res.ok) {
+    const body = await res.text();
+    throw new Error(`Printful products fetch failed: ${res.status} ${body}`);
+  }
   const { result } = await res.json();
 
   const detailed = await Promise.all(
@@ -30,7 +33,10 @@ export async function getStoreProduct(id) {
     headers: authHeaders(),
     cache: "no-store",
   });
-  if (!res.ok) throw new Error(`Printful product fetch failed: ${res.status}`);
+  if (!res.ok) {
+    const body = await res.text();
+    throw new Error(`Printful product fetch failed: ${res.status} ${body}`);
+  }
   const { result } = await res.json();
 
   const variants = result.sync_variants.map((v) => ({
@@ -55,7 +61,10 @@ export async function getVariant(variantId) {
     headers: authHeaders(),
     cache: "no-store",
   });
-  if (!res.ok) throw new Error(`Printful variant fetch failed: ${res.status}`);
+  if (!res.ok) {
+    const body = await res.text();
+    throw new Error(`Printful variant fetch failed: ${res.status} ${body}`);
+  }
   const { result } = await res.json();
   return result;
 }
