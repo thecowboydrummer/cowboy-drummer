@@ -1,8 +1,9 @@
 const PRINTFUL_API = "https://api.printful.com";
 
 function authHeaders() {
+  const token = Buffer.from(`${process.env.PRINTFUL_API_KEY}:`).toString("base64");
   const headers = {
-    Authorization: `Bearer ${process.env.PRINTFUL_API_KEY}`,
+    Authorization: `Basic ${token}`,
     "Content-Type": "application/json",
   };
   if (process.env.PRINTFUL_STORE_ID) {
