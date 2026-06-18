@@ -1,10 +1,21 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
 
+const SIZE_PATTERN = /^(XS|S|M|L|XL|2XL|3XL|4XL|5XL|XXL|XXXL|One Size|OS)$/i;
+
 function parseVariant(name, productName) {
   const rest = name.slice(productName.length).replace(/^\s*\/\s*/, "");
-  const parts = rest.split(" / ").map((p) => p.trim());
-  return { color: parts[0] || null, size: parts[1] || null };
+  const parts = rest.split(" / ").map((p) => p.trim()).filter(Boolean);
+
+  if (parts.length >= 2) {
+    return { color: parts[0], size: parts[1] };
+  }
+  if (parts.length === 1) {
+    return SIZE_PATTERN.test(parts[0])
+      ? { color: null, size: parts[0] }
+      : { color: parts[0], size: null };
+  }
+  return { color: null, size: null };
 }
 
 function ProductCard({ product, loadingId, onBuy }) {
