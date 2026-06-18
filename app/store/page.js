@@ -1,5 +1,110 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+
+function parseVariant(name, productName) {
+  const rest = name.slice(productName.length).replace(/^\s*\/\s*/, "");
+  const parts = rest.split(" / ").map((p) => p.trim());
+  return { color: parts[0] || null, size: parts[1] || null };
+}
+
+function ProductCard({ product, loadingId, onBuy }) {
+  const options = useMemo(
+    () => product.variants.map((v) => ({ ...v, ...parseVariant(v.name, product.name) })),
+    [product]
+  );
+  const colors = [...new Set(options.map((o) => o.color).filter(Boolean))];
+  const sizes = [...new Set(options.map((o) => o.size).filter(Boolean))];
+
+  const [color, setColor] = useState(colors[0] || null);
+  const [size, setSize] = useState(sizes[0] || null);
+
+  const selected =
+    options.find((o) => o.color === color && o.size === size) || options[0];
+
+  return (
+    <div
+      style={{
+        background: "var(--bg2)",
+        border: "1px solid #2a2a2a",
+        borderRadius: "8px",
+        overflow: "hidden",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      {selected.image && (
+        <img
+          src={selected.image}
+          alt={product.name}
+          style={{ width: "100%", aspectRatio: "1", objectFit: "cover" }}
+        />
+      )}
+      <div style={{ padding: "24px", display: "flex", flexDirection: "column", flex: 1 }}>
+        <h3 style={{ fontSize: "18px", marginBottom: "8px" }}>{product.name}</h3>
+        <p style={{ color: "var(--gold)", fontFamily: "var(--font-display)", fontSize: "20px", marginBottom: "20px" }}>
+          ${selected.retailPrice}
+        </p>
+
+        {colors.length > 0 && (
+          <div style={{ marginBottom: "16px" }}>
+            <p style={{ fontSize: "12px", letterSpacing: "1px", color: "var(--muted)", marginBottom: "8px" }}>COLOR</p>
+            <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+              {colors.map((c) => (
+                <button
+                  key={c}
+                  onClick={() => setColor(c)}
+                  className="btn"
+                  style={{
+                    padding: "6px 14px",
+                    fontSize: "13px",
+                    background: c === color ? "var(--gold)" : "transparent",
+                    color: c === color ? "#000" : "var(--white)",
+                    border: "1px solid var(--gold)",
+                  }}
+                >
+                  {c}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {sizes.length > 0 && (
+          <div style={{ marginBottom: "20px" }}>
+            <p style={{ fontSize: "12px", letterSpacing: "1px", color: "var(--muted)", marginBottom: "8px" }}>SIZE</p>
+            <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+              {sizes.map((s) => (
+                <button
+                  key={s}
+                  onClick={() => setSize(s)}
+                  className="btn"
+                  style={{
+                    padding: "6px 14px",
+                    fontSize: "13px",
+                    background: s === size ? "var(--gold)" : "transparent",
+                    color: s === size ? "#000" : "var(--white)",
+                    border: "1px solid var(--gold)",
+                  }}
+                >
+                  {s}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <button
+          className="btn btn-gold"
+          disabled={!selected.inStock || loadingId === selected.id}
+          onClick={() => onBuy(selected.id)}
+          style={{ marginTop: "auto", opacity: selected.inStock ? 1 : 0.5 }}
+        >
+          {!selected.inStock ? "Sold Out" : loadingId === selected.id ? "Redirecting…" : "Buy Now"}
+        </button>
+      </div>
+    </div>
+  );
+}
 
 export default function Store() {
   const [products, setProducts] = useState(null);
@@ -62,43 +167,9 @@ export default function Store() {
               gap: "32px",
             }}
           >
-            {products?.map((product) =>
-              product.variants.map((variant) => (
-                <div
-                  key={variant.id}
-                  style={{
-                    background: "var(--bg2)",
-                    border: "1px solid #2a2a2a",
-                    borderRadius: "8px",
-                    overflow: "hidden",
-                    display: "flex",
-                    flexDirection: "column",
-                  }}
-                >
-                  {variant.image && (
-                    <img
-                      src={variant.image}
-                      alt={variant.name}
-                      style={{ width: "100%", aspectRatio: "1", objectFit: "cover" }}
-                    />
-                  )}
-                  <div style={{ padding: "24px", display: "flex", flexDirection: "column", flex: 1 }}>
-                    <h3 style={{ fontSize: "18px", marginBottom: "8px" }}>{variant.name}</h3>
-                    <p style={{ color: "var(--gold)", fontFamily: "var(--font-display)", fontSize: "20px", marginBottom: "20px" }}>
-                      ${variant.retailPrice}
-                    </p>
-                    <button
-                      className="btn btn-gold"
-                      disabled={!variant.inStock || loadingId === variant.id}
-                      onClick={() => buy(variant.id)}
-                      style={{ marginTop: "auto", opacity: variant.inStock ? 1 : 0.5 }}
-                    >
-                      {!variant.inStock ? "Sold Out" : loadingId === variant.id ? "Redirecting…" : "Buy Now"}
-                    </button>
-                  </div>
-                </div>
-              ))
-            )}
+            {products?.map((product) => (
+              <ProductCard key={product.id} product={product} loadingId={loadingId} onBuy={buy} />
+            ))}
           </div>
 
           <div style={{ marginTop: "48px", padding: "28px", background: "var(--bg3)", borderRadius: "6px", borderLeft: "3px solid var(--gold)", maxWidth: "600px", marginLeft: "auto", marginRight: "auto" }}>
