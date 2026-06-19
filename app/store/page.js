@@ -121,6 +121,7 @@ export default function Store() {
   const [products, setProducts] = useState(null);
   const [error, setError] = useState(null);
   const [loadingId, setLoadingId] = useState(null);
+  const [notice, setNotice] = useState(null);
 
   useEffect(() => {
     fetch("/api/printful/products")
@@ -130,6 +131,15 @@ export default function Store() {
         else setProducts(data.products);
       })
       .catch(() => setError("Failed to load products."));
+  }, []);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.has("success")) setNotice("success");
+    else if (params.has("canceled")) setNotice("canceled");
+    if (params.has("success") || params.has("canceled")) {
+      window.history.replaceState({}, "", window.location.pathname);
+    }
   }, []);
 
   async function buy(variantId) {
@@ -159,6 +169,15 @@ export default function Store() {
 
       <section>
         <div className="container">
+          {notice === "success" && (
+            <div style={{ textAlign: "center", marginBottom: "32px", padding: "20px", background: "rgba(74,222,128,0.1)", border: "1px solid #4ade80", borderRadius: "6px" }}>
+              <p style={{ color: "#4ade80", fontFamily: "var(--font-display)", letterSpacing: "1px", fontSize: "18px" }}>✓ Order placed! Thank you for your purchase.</p>
+              <p style={{ color: "var(--muted)", fontSize: "14px", marginTop: "6px" }}>You'll receive a receipt from Stripe by email, and your order is now being processed.</p>
+            </div>
+          )}
+          {notice === "canceled" && (
+            <p style={{ textAlign: "center", color: "var(--muted)", marginBottom: "32px" }}>Checkout was canceled. No charge was made.</p>
+          )}
           {error && (
             <p style={{ textAlign: "center", color: "var(--gold)", marginBottom: "32px" }}>{error}</p>
           )}
