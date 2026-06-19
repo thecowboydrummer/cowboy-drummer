@@ -70,7 +70,7 @@ export async function getVariant(variantId) {
 }
 
 export async function createOrder({ recipient, items, retail }) {
-  const res = await fetch(`${PRINTFUL_API}/orders`, {
+  const res = await fetch(`${PRINTFUL_API}/orders?confirm=true`, {
     method: "POST",
     headers: authHeaders(),
     body: JSON.stringify({
