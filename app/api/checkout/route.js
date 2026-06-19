@@ -19,15 +19,15 @@ export async function POST(req) {
       line_items: [
         {
           price_data: {
-            currency: variant.sync_variant.currency?.toLowerCase() || "usd",
+            currency: variant.currency?.toLowerCase() || "usd",
             product_data: {
-              name: variant.sync_variant.name,
-              images: variant.sync_variant.files
+              name: variant.name,
+              images: variant.files
                 ?.filter((f) => f.type === "preview")
                 .map((f) => f.preview_url)
                 .slice(0, 1),
             },
-            unit_amount: Math.round(parseFloat(variant.sync_variant.retail_price) * 100),
+            unit_amount: Math.round(parseFloat(variant.retail_price) * 100),
           },
           quantity: qty,
         },
