@@ -20,6 +20,18 @@ export async function POST(req) {
 
     const shipping = fullSession.shipping_details || fullSession.customer_details;
     const address = shipping?.address;
+    const email = fullSession.customer_details?.email;
+
+    if (email && fullSession.payment_intent) {
+      try {
+        const paymentIntent = await stripe.paymentIntents.retrieve(fullSession.payment_intent);
+        if (paymentIntent.latest_charge) {
+          await stripe.charges.update(paymentIntent.latest_charge, { receipt_email: email });
+        }
+      } catch (err) {
+        console.error("Failed to trigger receipt email:", err.message);
+      }
+    }
 
     try {
       await createOrder({
