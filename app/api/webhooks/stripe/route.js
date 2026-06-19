@@ -26,7 +26,10 @@ export async function POST(req) {
       try {
         const paymentIntent = await stripe.paymentIntents.retrieve(fullSession.payment_intent);
         if (paymentIntent.latest_charge) {
-          await stripe.charges.update(paymentIntent.latest_charge, { receipt_email: email });
+          await stripe.charges.update(paymentIntent.latest_charge, {
+            receipt_email: email,
+            description: `Charge for ${email}`,
+          });
         }
       } catch (err) {
         console.error("Failed to trigger receipt email:", err.message);
