@@ -1,8 +1,6 @@
 "use client";
 import { useState } from "react";
 
-const FORMSPREE_ID = "YOUR_FORM_ID";
-
 const socials = [
   { label: "Instagram", href: "https://www.instagram.com/thecowboydrummer/" },
   { label: "TikTok", href: "https://www.tiktok.com/@thecowboydrummer" },
@@ -17,7 +15,17 @@ export default function Contact() {
     e.preventDefault();
     setStatus("sending");
     try {
-      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, { method: "POST", body: new FormData(e.target), headers: { Accept: "application/json" } });
+      const formData = new FormData(e.target);
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.get("name"),
+          email: formData.get("email"),
+          subject: formData.get("subject"),
+          message: formData.get("message"),
+        }),
+      });
       setStatus(res.ok ? "success" : "error");
       if (res.ok) e.target.reset();
     } catch { setStatus("error"); }
