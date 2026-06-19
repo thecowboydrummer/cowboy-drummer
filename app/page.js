@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const HERO_IMG = "https://images.squarespace-cdn.com/content/v1/60e5a0e3b2255916783e55b2/1698514306435-IZF9GIL61NM0PAA796ZU/tmp-401-jgUCiZoWvbh7";
+const HERO_LOGO = "https://images.squarespace-cdn.com/content/v1/60e5a0e3b2255916783e55b2/1625663679989-5XJ18HKHK3R07GNMQSHH/Stacked+Logo.png?format=1500w";
 const BIO_IMG = "https://images.squarespace-cdn.com/content/v1/60e5a0e3b2255916783e55b2/1625860014410-LP8NP75RQTPFW91RVAH4/IMG_1122.PNG";
 
 const socials = [
@@ -15,16 +15,9 @@ export default function Home() {
   return (
     <>
       {/* HERO */}
-      <section style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", overflow: "hidden" }}>
-        <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${HERO_IMG})`, backgroundSize: "cover", backgroundPosition: "center top", filter: "brightness(0.35)" }} />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, transparent 50%, rgba(10,10,10,0.9) 100%)" }} />
+      <section style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", overflow: "hidden", background: "radial-gradient(circle at center, #161616 0%, var(--bg) 70%)" }}>
         <div style={{ position: "relative", zIndex: 1, padding: "0 24px" }}>
-          <p style={{ fontFamily: "var(--font-display)", fontSize: "clamp(13px,2vw,16px)", letterSpacing: "6px", color: "var(--gold)", marginBottom: "16px" }}>
-            ROCHESTER, NY · DROPOUT KINGS · PAISTE ARTIST
-          </p>
-          <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(60px,12vw,140px)", letterSpacing: "4px", lineHeight: 0.9, color: "var(--white)", marginBottom: "24px" }}>
-            THE COWBOY<br />DRUMMER
-          </h1>
+          <img src={HERO_LOGO} alt="The Cowboy Drummer" style={{ width: "min(420px, 70vw)", height: "auto", marginBottom: "32px" }} />
           <p style={{ fontSize: "clamp(14px,2vw,18px)", color: "#ccc", letterSpacing: "2px", marginBottom: "40px", fontStyle: "italic" }}>
             Drumming for a purpose. Every day.
           </p>
