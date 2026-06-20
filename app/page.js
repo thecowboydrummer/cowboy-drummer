@@ -19,11 +19,11 @@ export default function Home() {
         <div style={{ position: "relative", zIndex: 1, padding: "0 24px" }}>
           <img src={HERO_LOGO} alt="The Cowboy Drummer" style={{ width: "min(420px, 70vw)", height: "auto", marginBottom: "32px" }} />
           <p style={{ fontSize: "clamp(14px,2vw,18px)", color: "#ccc", letterSpacing: "2px", marginBottom: "40px", fontStyle: "italic" }}>
-            Drumming for a purpose. Every day.
+            Drumming for a purpose.
           </p>
           <div style={{ display: "flex", gap: "16px", justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/store" className="btn btn-gold">Get Merch</Link>
-            <Link href="/contact" className="btn btn-outline">Work With Me</Link>
+            <Link href="/contact" className="btn btn-outline">Contact Me</Link>
           </div>
         </div>
       </section>
