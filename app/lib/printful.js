@@ -25,7 +25,22 @@ export async function getStoreProducts() {
   const detailed = await Promise.all(
     result.map((p) => getStoreProduct(p.id))
   );
-  return detailed;
+  return detailed.sort((a, b) => productOrder(a.name) - productOrder(b.name));
+}
+
+const PRODUCT_ORDER = [
+  "play it forward",
+  "tcbd tee",
+  "joe lana sr",
+  "tcbd hoodie",
+  "drummer hoodie",
+  "sticker",
+];
+
+function productOrder(name) {
+  const lower = name.toLowerCase();
+  const index = PRODUCT_ORDER.findIndex((key) => lower.includes(key));
+  return index === -1 ? PRODUCT_ORDER.length : index;
 }
 
 export async function getStoreProduct(id) {
