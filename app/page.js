@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const HERO_LOGO = "/play-it-forward-logo.png";
+const HERO_LOGO = "/tcbd-merch-design.png";
 const BIO_IMG = "/pops-bw.jpg";
 
 const socials = [
