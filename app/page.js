@@ -54,7 +54,7 @@ export default function Home() {
               Joe Lana Jr., known as the "Cowboy Drummer," is a musician and influencer from Rochester, New York — raised in a family of musicians and shaped by the influence of his late father and grandfather.
             </p>
             <p style={{ color: "#aaa", fontSize: "16px", lineHeight: 1.8, marginBottom: "32px" }}>
-              Ten years clean from opiate addiction, Joe now channels his story into powerful drumming as a member of Dropout Kings and as a social media voice for recovery, resilience, and music.
+              Clean from opiate addiction since 2013, Joe now channels his story into powerful drumming as a member of Dropout Kings and as a social media voice for recovery, resilience, and music.
             </p>
             <Link href="/about" className="btn btn-gold">Full Story</Link>
           </div>
