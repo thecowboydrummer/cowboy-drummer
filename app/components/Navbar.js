@@ -7,6 +7,7 @@ const LOGO = "https://images.squarespace-cdn.com/content/v1/60e5a0e3b2255916783e
 const links = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
+  { href: "/tour", label: "Tour" },
   { href: "/store", label: "Store" },
   { href: "/contact", label: "Contact" },
 ];
