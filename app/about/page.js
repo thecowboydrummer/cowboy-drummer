@@ -15,9 +15,12 @@ export default function About() {
             <img src={ABOUT_IMG} alt="Joe Lana Jr." style={{ width: "100%", borderRadius: "4px" }} />
             <div style={{ marginTop: "20px", padding: "16px", background: "var(--bg2)", borderLeft: "3px solid var(--gold)", borderRadius: "0 4px 4px 0" }}>
               <p style={{ fontFamily: "var(--font-display)", fontSize: "12px", letterSpacing: "2px", color: "var(--muted)", marginBottom: "8px" }}>PROUD ENDORSED ARTIST</p>
-              <p style={{ fontFamily: "var(--font-display)", fontSize: "15px", letterSpacing: "2px", color: "var(--gold)" }}>Paiste Cymbals</p>
-              <p style={{ fontFamily: "var(--font-display)", fontSize: "15px", letterSpacing: "2px", color: "var(--gold)" }}>Evans Drumheads</p>
+              <p style={{ fontFamily: "var(--font-display)", fontSize: "15px", letterSpacing: "2px", color: "var(--gold)" }}>Paiste</p>
+              <p style={{ fontFamily: "var(--font-display)", fontSize: "15px", letterSpacing: "2px", color: "var(--gold)" }}>Evans</p>
               <p style={{ fontFamily: "var(--font-display)", fontSize: "15px", letterSpacing: "2px", color: "var(--gold)" }}>Promark</p>
+              <p style={{ fontFamily: "var(--font-display)", fontSize: "15px", letterSpacing: "2px", color: "var(--gold)" }}>Rock Locks</p>
+              <p style={{ fontFamily: "var(--font-display)", fontSize: "15px", letterSpacing: "2px", color: "var(--gold)" }}>No Nut Cymbal Sleeves</p>
+              <p style={{ fontFamily: "var(--font-display)", fontSize: "15px", letterSpacing: "2px", color: "var(--gold)" }}>SE Microphones</p>
             </div>
           </div>
           <div>
