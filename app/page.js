@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 const HERO_LOGO = "https://images.squarespace-cdn.com/content/v1/60e5a0e3b2255916783e55b2/1625663679989-5XJ18HKHK3R07GNMQSHH/Stacked+Logo.png?format=1500w";
-const BIO_IMG = "https://images.squarespace-cdn.com/content/v1/60e5a0e3b2255916783e55b2/1625860014410-LP8NP75RQTPFW91RVAH4/IMG_1122.PNG";
+const BIO_IMG = "/pops-bw.jpg";
 
 const socials = [
   { label: "Instagram", href: "https://www.instagram.com/thecowboydrummer/" },
