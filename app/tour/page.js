@@ -1,33 +1,29 @@
 export const metadata = { title: "Tour — The Cowboy Drummer" };
 
-const NOTES = {
-  "+": "No Dropout Kings",
-  "*": "No VRSTY",
-  "#": "Ded Only",
-};
-
 const DATES = [
-  { date: "July 11", city: "Phoenix, AZ", venue: "The Rebel Lounge", note: "+" },
-  { date: "July 13", city: "Lubbock, TX", venue: "Jake's" },
-  { date: "July 14", city: "Oklahoma City, OK", venue: "89th St." },
-  { date: "July 15", city: "Lawrence, KS", venue: "The Bottleneck", note: "+" },
-  { date: "July 17", city: "Mansfield, OH", venue: "Inkcarceration", note: "#" },
-  { date: "July 18", city: "Cadott, WI", venue: "Rock Fest", note: "#" },
-  { date: "July 19", city: "Minneapolis, MN", venue: "Studio B", note: "+" },
-  { date: "July 20", city: "Joliet, IL", venue: "The Forge", note: "+" },
-  { date: "July 21", city: "Des Moines, IA", venue: "xBk Live", note: "+" },
+  { date: "July 11", city: "Phoenix, AZ", venue: "The Rebel Lounge" },
+  { date: "July 12", city: "Roswell, NM", venue: "The Liberty" },
+  { date: "July 13", city: "Lubbock, TX", venue: "Jake's Back Room" },
+  { date: "July 14", city: "Oklahoma City, OK", venue: "89th Street Collective" },
+  { date: "July 15", city: "Lawrence, KS", venue: "The Bottleneck" },
+  { date: "July 17", city: "Rapid City, SD", venue: "Abys" },
+  { date: "July 18", city: "Sioux Falls, SD", venue: "Club David" },
+  { date: "July 19", city: "Minneapolis, MN", venue: "Studio B @ Skyway Theatre" },
+  { date: "July 20", city: "Joliet, IL", venue: "The Forge" },
+  { date: "July 21", city: "Des Moines, IA", venue: "xBk Live" },
   { date: "July 22", city: "Iowa City, IA", venue: "Wildwood" },
-  { date: "July 23", city: "Madison, WI", venue: "The Annex", note: "*" },
+  { date: "July 23", city: "Madison, WI", venue: "The Annex" },
   { date: "July 24", city: "Westland, MI", venue: "The Token Lounge" },
-  { date: "July 25", city: "Rochester, NY", venue: "Montage Music", note: "*" },
+  { date: "July 25", city: "Rochester, NY", venue: "Montage Music Hall" },
   { date: "July 26", city: "Pittsburgh, PA", venue: "The Crafthouse" },
   { date: "July 28", city: "Clifton, NJ", venue: "Dingbatz" },
   { date: "July 29", city: "Boston, MA", venue: "Brighton Music Hall" },
-  { date: "July 30", city: "Reading, PA", venue: "Reverb", note: "+" },
-  { date: "Aug 1", city: "Lansing, MI", venue: "Rock Lansing Fest", note: "#" },
-  { date: "Aug 3", city: "Sauget, IL", venue: "Pop's Venue" },
-  { date: "Aug 4", city: "Wichita, KS", venue: "Wave" },
-  { date: "Aug 6", city: "Colorado Springs, CO", venue: "Black Sheep" },
+  { date: "July 30", city: "Reading, PA", venue: "Reverb" },
+  { date: "July 31", city: "Cleveland, OH", venue: "Mahalls" },
+  { date: "Aug 1", city: "South Bend, IN", venue: "Langlab" },
+  { date: "Aug 3", city: "Sauget, IL", venue: "Pop's Nightclub & Concert Venue" },
+  { date: "Aug 4", city: "Wichita, KS", venue: "WAVE" },
+  { date: "Aug 6", city: "Colorado Springs, CO", venue: "The Black Sheep" },
   { date: "Aug 7", city: "Denver, CO", venue: "HQ" },
   { date: "Aug 8", city: "Grand Junction, CO", venue: "Mesa Theater" },
 ];
@@ -52,15 +48,8 @@ export default function Tour() {
                 <span style={{ fontFamily: "var(--font-display)", color: "var(--gold)", letterSpacing: "1px", minWidth: "80px" }}>{d.date}</span>
                 <span style={{ flex: 1, color: "var(--white)" }}>
                   {d.city} — {d.venue}
-                  {d.note && <span style={{ color: "var(--muted)" }}> {d.note}</span>}
                 </span>
               </div>
-            ))}
-          </div>
-
-          <div style={{ marginTop: "32px", color: "var(--muted)", fontSize: "13px", display: "flex", gap: "24px", flexWrap: "wrap" }}>
-            {Object.entries(NOTES).map(([symbol, label]) => (
-              <span key={symbol}>{symbol} {label}</span>
             ))}
           </div>
         </div>
