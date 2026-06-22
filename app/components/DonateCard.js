@@ -31,10 +31,7 @@ export default function DonateCard() {
 
   return (
     <div style={{ background: "var(--bg2)", border: "1px solid #2a2a2a", borderRadius: "8px", padding: "32px", maxWidth: "440px", margin: "0 auto", textAlign: "center" }}>
-      <p style={{ fontFamily: "var(--font-display)", fontSize: "13px", letterSpacing: "4px", color: "var(--gold)", marginBottom: "12px" }}>BUY THE BAND A ROUND</p>
-      <p style={{ color: "var(--muted)", fontSize: "15px", marginBottom: "24px" }}>
-        If the music's meant something to you, kick in a few bucks to keep it going.
-      </p>
+      <p style={{ fontFamily: "var(--font-display)", fontSize: "13px", letterSpacing: "4px", color: "var(--gold)", marginBottom: "24px" }}>DONATE TO THE COWBOY DRUMMER</p>
 
       <div style={{ display: "flex", gap: "10px", justifyContent: "center", marginBottom: "16px" }}>
         {PRESETS.map((p) => (
