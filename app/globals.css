@@ -1,9 +1,9 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #ff69b4;
-  --bg2: #ff85c1;
-  --bg3: #ffa1cf;
+  --bg: #0a0a0a;
+  --bg2: #111111;
+  --bg3: #1a1a1a;
   --gold: #c9952a;
   --gold-light: #e8b84b;
   --white: #f5f5f5;
