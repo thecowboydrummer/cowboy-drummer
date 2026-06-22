@@ -36,6 +36,10 @@ export async function POST(req) {
       }
     }
 
+    if (!fullSession.metadata?.printful_variant_id) {
+      return Response.json({ received: true });
+    }
+
     try {
       await createOrder({
         recipient: {

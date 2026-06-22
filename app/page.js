@@ -1,4 +1,5 @@
 import Link from "next/link";
+import DonateCard from "./components/DonateCard";
 
 const HERO_LOGO = "/tcbd-merch-design.png";
 const BIO_IMG = "/pops-bw.jpg";
@@ -39,6 +40,13 @@ export default function Home() {
           ))}
         </div>
       </div>
+
+      {/* DONATE */}
+      <section style={{ background: "var(--bg)", paddingTop: "60px" }}>
+        <div className="container">
+          <DonateCard />
+        </div>
+      </section>
 
       {/* BIO PREVIEW */}
       <section style={{ background: "var(--bg)" }}>
