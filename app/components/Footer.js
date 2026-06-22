@@ -1,10 +1,9 @@
 import Link from "next/link";
 const socials = [
-  { label: "Instagram", href: "https://www.instagram.com/thecowboydrummer/" },
-  { label: "TikTok", href: "https://www.tiktok.com/@thecowboydrummer" },
   { label: "YouTube", href: "https://www.youtube.com/channel/UCDr-ZqbUexum0ifo1E4Mxuw" },
+  { label: "Instagram", href: "https://www.instagram.com/thecowboydrummer/" },
   { label: "Facebook", href: "https://www.facebook.com/the.cowboy.drummer" },
-  { label: "Linktree", href: "https://linktr.ee/Thecowboydrummer" },
+  { label: "TikTok", href: "https://www.tiktok.com/@thecowboydrummer" },
 ];
 export default function Footer() {
   return (
