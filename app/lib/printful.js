@@ -29,9 +29,10 @@ export async function getStoreProducts() {
 }
 
 const PRODUCT_ORDER = [
-  "play it forward",
+  "play it forward tee",
   "tcbd tee",
   "joe lana sr",
+  "play it forward hoodie",
   "tcbd hoodie",
   "drummer hoodie",
   "sticker",
