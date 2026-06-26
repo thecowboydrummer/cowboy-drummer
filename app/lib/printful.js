@@ -28,20 +28,17 @@ export async function getStoreProducts() {
   return detailed.sort((a, b) => productOrder(a.name) - productOrder(b.name));
 }
 
-const PRODUCT_ORDER = [
-  "play it forward tee",
-  "tcbd tee",
-  "joe lana sr",
-  "play it forward hoodie",
-  "tcbd hoodie",
-  "drummer hoodie",
-  "sticker",
-];
+const PRODUCT_GROUPS = ["play it forward", "tcbd", "joe lana sr"];
 
 function productOrder(name) {
   const lower = name.toLowerCase();
-  const index = PRODUCT_ORDER.findIndex((key) => lower.includes(key));
-  return index === -1 ? PRODUCT_ORDER.length : index;
+  if (lower.includes("sticker")) return PRODUCT_GROUPS.length * 2;
+
+  const groupIndex = PRODUCT_GROUPS.findIndex((g) => lower.includes(g));
+  if (groupIndex === -1) return PRODUCT_GROUPS.length * 2 + 1;
+
+  const isHoodie = lower.includes("hoodie");
+  return groupIndex + (isHoodie ? PRODUCT_GROUPS.length : 0);
 }
 
 export async function getStoreProduct(id) {
