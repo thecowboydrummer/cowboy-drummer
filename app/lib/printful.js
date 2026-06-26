@@ -32,10 +32,11 @@ const PRODUCT_GROUPS = ["play it forward", "tcbd", "joe lana sr"];
 
 function productOrder(name) {
   const lower = name.toLowerCase();
-  if (lower.includes("sticker")) return PRODUCT_GROUPS.length * 2;
+  if (lower.includes("mug")) return PRODUCT_GROUPS.length * 2;
+  if (lower.includes("sticker")) return PRODUCT_GROUPS.length * 2 + 1;
 
   const groupIndex = PRODUCT_GROUPS.findIndex((g) => lower.includes(g));
-  if (groupIndex === -1) return PRODUCT_GROUPS.length * 2 + 1;
+  if (groupIndex === -1) return PRODUCT_GROUPS.length * 2 + 2;
 
   const isHoodie = lower.includes("hoodie");
   return groupIndex + (isHoodie ? PRODUCT_GROUPS.length : 0);
